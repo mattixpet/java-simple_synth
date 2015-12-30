@@ -290,6 +290,11 @@ public class Buttons2 extends JPanel {
   //setur rettar notur i hljominn sem thad faer
   //ath i augnablikinu er max 6 notur i hljomi
   public Chord SetjaNotur(Note[] chord, String[] letters, int eposition) {
+
+    // fix so that we definitely get the time, seemed like it didn't work correctly
+    String curTime = time.getText();
+    double curT = Double.parseDouble(curTime);
+    
     for (int i = eposition; i < letters.length; i++) {
       if (letters[i].equals("e")) {
         break;
@@ -333,7 +338,7 @@ public class Buttons2 extends JPanel {
         chord[i - eposition] = B;
       }
     }
-    Chord x = new Chord(chord, t);
+    Chord x = new Chord(chord, curT);
     return x;
   }
 
